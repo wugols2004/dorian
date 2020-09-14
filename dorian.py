@@ -4,6 +4,7 @@ import re
 import logging
 import asyncio
 from os import environ
+from secrets import randbelow
 from random import randint
 
 logging.basicConfig(level=logging.INFO)
@@ -33,7 +34,7 @@ class DiceResult:
         self.colour=COL_NORM_SUCCESS
 
 def RollDie(min=1, max=10):
-    result = randint(min,max)
+    result = randbelow(max - min) + min
     return result
 
 def ResolveDice(BonusDie, PenaltyDie, Threshold):
